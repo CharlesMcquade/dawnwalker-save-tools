@@ -50,8 +50,8 @@ Hash reversal is mostly a dead end. Diffing parsed tables across saves answers t
 
 ⚠ **Completed quests often leave NO journal object.** "No trace in the NAME table" does **not** mean "never started". Check the in-game journal's Completed tab before telling a player a quest is undone. Reliable save-derived signals are: new journal objects, vanished journal objects, and timestamped fact/graph deltas.
 
-## Rules that save hours
+## Pitfalls
 
 - Diff **parsed tables**, never raw state-stream bytes. Bit-packing shifts produce thousands of false positives.
-- Test a hash-naming convention against one known-real fact, then against a *second* quest family. If it doesn't generalize, stop and ship the timeline answer.
+- A naming guess that cracks one fact hash usually doesn't carry over to the next quest family. Check it against a second family before investing; if it fails, use the timeline answer.
 - On Windows OpenSSH, `scp host:'dir/*.sav'` can't expand globs. Stream `ssh host 'cd dir && tar -cf - *.sav *.meta' | tar -xf -` instead (that's what `pull --host` does).

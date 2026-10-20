@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Dawnwalker save toolkit (The Blood of Dawnwalker, DSAV format).
+The Blood of Dawnwalker save reader (DSAV format).
 
-Self-contained: decompresses .sav files (Oodle/Kraken), parses the NAME table,
-QuestSystemImpl facts (hashed) and QuestHelperImpl quest-graph entries, and
-diffs them across a timeline of saves. Facts are hashed by the game, so this
-tool reports RAW HASHES + VALUES + timeline deltas — enough to answer
-"what changed between saves" without any game asset tables.
+Decompresses .sav chunks (Oodle Kraken via ooz), parses the NAME table,
+QuestSystemImpl facts and QuestHelperImpl quest-graph entries, and diffs them
+across a chronological series of saves. Fact names are hashed by the game, so
+output is raw hashes and values; timeline deltas carry the meaning.
 
 Usage:
   python3 dwsave.py pull                  # copy saves -> ./saves/ (local, or --host over ssh)
@@ -14,7 +13,7 @@ Usage:
   python3 dwsave.py timeline              # chronological fact/graph diff of ALL local saves
   python3 dwsave.py dump <file.sav>       # full dump: facts (hash=val) + active graph nodes
   python3 dwsave.py diff A.sav B.sav      # two-save diff
-  python3 dwsave.py rebuild               # rebuild libooz from bundled ooz source
+  python3 dwsave.py rebuild               # clone powzix/ooz and build libooz (one-time)
 
 Requires: libooz.dylib (macOS) / libooz.so (Linux) next to this file; build with `rebuild`.
 Windows: run under WSL (rebuild needs g++).
