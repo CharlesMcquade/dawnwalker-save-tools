@@ -1,8 +1,17 @@
-# dawnwalker-save-tools
+# Dawnwalker Save Timeline
 
-Decode *The Blood of Dawnwalker* `.sav` files and see what changed between saves: quest facts set, quest-graph nodes opened or closed, journal entries started or finished. The headline feature is `timeline`, a chronological diff across every save in a folder that answers "what did that session actually finish?"
+**dawnwalker-save-tools**: decode *The Blood of Dawnwalker* `.sav` files and see what changed between saves: quest facts set, quest-graph nodes opened or closed, journal entries started or finished. The headline feature is `timeline`, a chronological diff across every save in a folder that answers "what did that session actually finish?"
 
 > Unofficial fan project. Not affiliated with or endorsed by Rebel Wolves or Bandai Namco Entertainment. The save format was reverse-engineered on PC saves and may change with future patches. Contains no game code or assets. The Oodle Kraken decoder is [powzix/ooz](https://github.com/powzix/ooz), an open-source reimplementation fetched from upstream at build time.
+
+## Why this exists
+
+In *The Blood of Dawnwalker*, quests run on a clock and choices close doors quietly. A session can resolve something without the journal making it obvious. Did that conversation finish the quest, or only move it along? The save records every quest flag the game set, but the format is compressed and the flag names are hashed. This tool decodes it and lines your saves up in order.
+
+- **Where am I?** The quest flags, active quest-graph nodes and open journal entries from any save.
+- **What did that session do?** `timeline` shows what each save started, closed or advanced compared with the one before it.
+- **Which save do I reload?** A quicksave from just before a choice shows up as the pre-choice state, so you can find the right one.
+- **What's next?** Give the timeline and `SKILL.md` to an AI agent. The tool reports state changes; the agent links them to the quest you were playing and suggests the next step, at whatever spoiler level you set. The tool itself contains no walkthrough.
 
 ## What it reads
 
