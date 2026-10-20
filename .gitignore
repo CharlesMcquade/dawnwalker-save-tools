@@ -1,0 +1,13 @@
+saves/
+*.zip
+*.sav
+*.meta
+*.lsv
+*.lsj
+*.lsf
+*.dylib
+*.so
+*.o
+ooz/
+ooz_stub/
+__pycache__/
